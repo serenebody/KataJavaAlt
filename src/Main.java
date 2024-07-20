@@ -9,7 +9,10 @@ public class Main {
 
         if (action == ' ') throw new Exception("Некорректный знак действия");
         String[] data = exp.split(" \\" + action + " ");
-        if (data[1].length() > 10) throw new Exception("Введено больше 10 символов");
+        if ((data[0].replaceAll("\"", "").length() > 10 || data[0].replaceAll("\"", "").length() < 1) ||
+                (data[1].replaceAll("\"", "").length() > 10 || data[1].replaceAll("\"", "").length() < 1)) {
+            throw new Exception("Введено больше 10 символов/Введено меньше 1 символа");
+        }
         if (action == '*' || action == '/') {
             if (data[1].contains("\"")) throw new Exception("Строку можно делить или умножать только на число");
         }
