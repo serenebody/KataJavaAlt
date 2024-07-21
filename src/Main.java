@@ -15,6 +15,14 @@ public class Main {
         }
         if (action == '*' || action == '/') {
             if (data[1].contains("\"")) throw new Exception("Строку можно делить или умножать только на число");
+            try {
+                int num = Integer.parseInt(data[1]);
+                if (num < 1 || num > 10) {
+                    throw new Exception("Число должно быть в диапазоне от 1 до 10");
+                }
+            } catch (NumberFormatException e) {
+                throw new Exception("Неверный формат числа");
+            }
         }
         for (int i = 0; i < data.length; i++) {
             data[i] = data[i].replace("\"", "");
